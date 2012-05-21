@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://breadwinner:8080/banking-ws-metro/BankingWSMetro?wsdl" uri="wsdl/breadwinner_8080/banking-ws-metro/BankingWSMetro.wsdl"/>
+    <system systemId="http://breadwinner:8080/banking-ws-metro/BankingWSMetro?xsd=1" uri="wsdl/breadwinner_8080/banking-ws-metro/BankingWSMetro.xsd_1.xsd"/>
+</catalog>
