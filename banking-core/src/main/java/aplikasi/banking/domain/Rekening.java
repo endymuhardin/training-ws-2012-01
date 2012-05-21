@@ -1,10 +1,12 @@
 package aplikasi.banking.domain;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Rekening {
 	private String nomer;
 	private String nama;
+        private Date tanggalPembukaan;
 	private BigDecimal saldo;
 	
 	public String getNomer() {
@@ -25,4 +27,12 @@ public class Rekening {
 	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;
 	}
+
+    public Date getTanggalPembukaan() {
+        return tanggalPembukaan;
+    }
+
+    public void setTanggalPembukaan(Date tanggalPembukaan) {
+        this.tanggalPembukaan = tanggalPembukaan;
+    }
 }
