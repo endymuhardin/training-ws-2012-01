@@ -4,6 +4,9 @@
  */
 package aplikasi.banking.ws.metro;
 
+import aplikasi.banking.domain.Rekening;
+import aplikasi.banking.service.CoreBankingService;
+import java.math.BigDecimal;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -15,6 +18,10 @@ import javax.jws.WebService;
 @WebService(serviceName = "BankingWSMetro")
 public class BankingWSMetro {
 
+    // nantinya ini diinject pakai @Autowired (Spring)
+    // atau pakai @EJB (JEE)
+    private CoreBankingService service = new CoreBankingService();
+    
     /**
      * This is a sample web service operation
      */
@@ -23,5 +30,14 @@ public class BankingWSMetro {
         return "Hello " + txt + " !";
     }
     
+    @WebMethod(operationName = "saldo")
+    public BigDecimal cekSaldo(@WebParam(name = "nomer") String nomer) {
+        // hanya wrapper saja, business logic tidak disini
+        return service.cekSaldo(nomer); 
+    }
     
+    @WebMethod(operationName = "info")
+    public Rekening informasi(@WebParam(name="nomer")String nomer){
+        return service.informasiRekening(nomer);
+    }
 }
