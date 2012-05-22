@@ -58,6 +58,20 @@
                         <id>wsimport-generate-BankingWSMetro</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/banking-ws-spring/banking.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://localhost:8080/banking-ws-spring/banking.wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/banking.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-banking</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

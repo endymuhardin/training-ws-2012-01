@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.artivisi.com/banking" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.artivisi.com/banking" targetNamespace="http://www.artivisi.com/banking">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bank="http://www.artivisi.com/banking" elementFormDefault="qualified" targetNamespace="http://www.artivisi.com/banking">
+
+    <element name="SaldoRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="nomer" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="SaldoResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="saldo" type="decimal"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="InfoRekeningRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="nomer" type="string"/>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <complexType name="Rekening">
+    	<all>
+    		<element name="nomer" type="string"/>
+    		<element name="nama" type="string"/>
+    		<element name="tanggalPembukaan" type="date"/>
+    		<element name="saldo" type="decimal"/>
+    	</all>
+    </complexType>
+    
+    <element name="InfoRekeningResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="Rekening" type="bank:Rekening"/>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="SaldoRequest">
+    <wsdl:part element="tns:SaldoRequest" name="SaldoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InfoRekeningRequest">
+    <wsdl:part element="tns:InfoRekeningRequest" name="InfoRekeningRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SaldoResponse">
+    <wsdl:part element="tns:SaldoResponse" name="SaldoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InfoRekeningResponse">
+    <wsdl:part element="tns:InfoRekeningResponse" name="InfoRekeningResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Banking">
+    <wsdl:operation name="Saldo">
+      <wsdl:input message="tns:SaldoRequest" name="SaldoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:SaldoResponse" name="SaldoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InfoRekening">
+      <wsdl:input message="tns:InfoRekeningRequest" name="InfoRekeningRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:InfoRekeningResponse" name="InfoRekeningResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BankingSoap11" type="tns:Banking">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Saldo">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SaldoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SaldoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InfoRekening">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InfoRekeningRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="InfoRekeningResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BankingService">
+    <wsdl:port binding="tns:BankingSoap11" name="BankingSoap11">
+      <soap:address location="http://localhost:8080/banking-ws-spring/bankingService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

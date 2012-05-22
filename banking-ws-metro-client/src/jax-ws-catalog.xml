@@ -2,4 +2,5 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://breadwinner:8080/banking-ws-metro/BankingWSMetro?wsdl" uri="wsdl/breadwinner_8080/banking-ws-metro/BankingWSMetro.wsdl"/>
     <system systemId="http://breadwinner:8080/banking-ws-metro/BankingWSMetro?xsd=1" uri="wsdl/breadwinner_8080/banking-ws-metro/BankingWSMetro.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/banking-ws-spring/banking.wsdl" uri="wsdl/localhost_8080/banking-ws-spring/banking.wsdl"/>
 </catalog>
