@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InfoRekeningResponse
+	xmlns="http://www.artivisi.com/banking" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.artivisi.com/banking ../../main/resources/banking.xsd ">
+	<Rekening>
+		<nomer>123</nomer>
+		<nama>Endy Muhardin</nama>
+		<tanggalPembukaan>2012-01-01</tanggalPembukaan>
+		<saldo>100000</saldo>
+	</Rekening>
+</InfoRekeningResponse>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InfoRekeningRequest
+	xmlns="http://www.artivisi.com/banking" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.artivisi.com/banking ../../main/resources/banking.xsd ">
+	<nomer>123</nomer>
+</InfoRekeningRequest>

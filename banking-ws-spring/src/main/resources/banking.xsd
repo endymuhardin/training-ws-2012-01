@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.artivisi.com/banking" 
+		xmlns:bank="http://www.artivisi.com/banking" 
+		elementFormDefault="qualified">
+
+    <element name="SaldoRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="nomer" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="SaldoResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="saldo" type="decimal"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="InfoRekeningRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="nomer" type="string"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <complexType name="Rekening">
+    	<all>
+    		<element name="nomer" type="string"></element>
+    		<element name="nama" type="string"></element>
+    		<element name="tanggalPembukaan" type="date"></element>
+    		<element name="saldo" type="decimal"></element>
+    	</all>
+    </complexType>
+    
+    <element name="InfoRekeningResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="Rekening" type="bank:Rekening"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+</schema>
