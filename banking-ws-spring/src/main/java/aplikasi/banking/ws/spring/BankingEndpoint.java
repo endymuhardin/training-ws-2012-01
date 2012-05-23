@@ -1,5 +1,6 @@
 package aplikasi.banking.ws.spring;
 
+import aplikasi.banking.ws.spring.exception.InvalidInputException;
 import aplikasi.banking.service.CoreBankingService;
 import com.artivisi.banking.InfoRekeningRequest;
 import com.artivisi.banking.InfoRekeningResponse;
@@ -7,6 +8,7 @@ import com.artivisi.banking.SaldoRequest;
 import com.artivisi.banking.SaldoResponse;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 import java.util.GregorianCalendar;
+import org.springframework.util.StringUtils;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -23,6 +25,12 @@ public class BankingEndpoint {
 	public SaldoResponse saldo(@RequestPayload SaldoRequest saldoRequest){
 		// hanya wrapper saja, business logic tidak disini
 		String nomer = saldoRequest.getNomer();
+                
+                // validasi nomer rekening harus diisi
+                if(!StringUtils.hasText(nomer)){
+                    throw new InvalidInputException("Nomer rekening harus diisi");
+                }
+                
 		SaldoResponse response = new SaldoResponse();
 		response.setSaldo(coreBankingService.cekSaldo(nomer));
 		return response;
