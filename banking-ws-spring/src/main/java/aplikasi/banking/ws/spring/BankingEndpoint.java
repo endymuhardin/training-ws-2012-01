@@ -1,6 +1,5 @@
 package aplikasi.banking.ws.spring;
 
-import aplikasi.banking.domain.Rekening;
 import aplikasi.banking.service.CoreBankingService;
 import com.artivisi.banking.InfoRekeningRequest;
 import com.artivisi.banking.InfoRekeningResponse;
@@ -37,7 +36,8 @@ public class BankingEndpoint {
 		String nomer = request.getNomer();
 		InfoRekeningResponse response = new InfoRekeningResponse();
                 
-                Rekening rek = coreBankingService.informasiRekening(nomer);
+                aplikasi.banking.domain.Rekening rek 
+                        = coreBankingService.informasiRekening(nomer);
                 
                 // konversi ke object hasil generate JAXB
                 com.artivisi.banking.Rekening rekJaxb = new com.artivisi.banking.Rekening();
