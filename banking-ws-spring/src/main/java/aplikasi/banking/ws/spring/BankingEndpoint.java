@@ -1,14 +1,12 @@
 package aplikasi.banking.ws.spring;
 
+import aplikasi.banking.service.CoreBankingService;
+import com.artivisi.banking.SaldoRequest;
+import com.artivisi.banking.SaldoResponse;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-
-import aplikasi.banking.service.CoreBankingService;
-
-import com.artivisi.banking.SaldoRequest;
-import com.artivisi.banking.SaldoResponse;
 
 @Endpoint
 public class BankingEndpoint {
