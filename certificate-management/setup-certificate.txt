@@ -1,0 +1,46 @@
+Security dengan Spring-WS
+
+Di sisi Server
+--------------
+
+1. Buat CA menggunakan XCA atau TinyCA
+2. Export CA certificate dalam format DER
+   misalnya outputnya adalah ca-certificate.der
+
+3. Buat keystore untuk menyimpan certificate CA
+
+keytool -genkey -alias training -keyalg RSA -keystore keystore-server.jks
+
+4. Hapus entri training 
+   by default keytool membuatkan satu entri yang tidak kita perlukan
+   karena kita akan import 
+
+keytool -delete -alias training -keystore keystore-server.jks   
+
+5. Import certificate CA 
+keytool -import -file ca-certificate.der -alias caSaya -keystore keystore-server.jks
+
+Di sisi Client
+--------------
+
+1. Buat keystore (otomatis berisi certificate yang belum disign)
+keytool -genkey -alias client1 -keyalg RSA -keystore keystore-client.jks
+
+2. Buat certificate signing request
+keytool -certreq -keystore keystore-client.jks -alias client1 -file client1.csr
+
+3. Sign request tersebut (oleh CA)
+   - import file CSR
+   - sign CSR
+   lakukan di TinyCA atau XCA, hasilnya (misalnya) bernama client1-signed.der
+
+4. Terima certificate yang telah disign
+   copy ke folder client
+
+5. Import dulu certificate CA
+keytool -import -file ca-certificate.der -alias ca -keystore keystore-client.jks
+
+5. Import certificate yang telah disign ke keystore
+keytool -import -file client1-signed.der -alias client1 -keystore keystore-client.jks
+
+
