@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header/>
+    <Body>
+        <bank:saldo xmlns:bank="http://metro.ws.banking.aplikasi/">
+            <nomer>123</nomer>
+        </bank:saldo>
+    </Body>
+</Envelope>
