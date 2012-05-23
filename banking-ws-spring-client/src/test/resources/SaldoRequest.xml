@@ -1,0 +1,8 @@
+<Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
+    <Header/>
+    <Body>
+        <bank:SaldoRequest xmlns:bank="http://www.artivisi.com/banking">
+            <bank:nomer>123</bank:nomer>
+        </bank:SaldoRequest>
+    </Body>
+</Envelope>
