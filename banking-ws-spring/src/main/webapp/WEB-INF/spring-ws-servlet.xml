@@ -19,11 +19,11 @@
     </sws:dynamic-wsdl>
 
     <bean id="annotationExceptionResolver" 
-              class="org.springframework.ws.soap.server.endpoint.SoapFaultAnnotationExceptionResolver"
+          class="org.springframework.ws.soap.server.endpoint.SoapFaultAnnotationExceptionResolver"
         />
         
     <bean id="exceptionResolver" 
-              class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
+          class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
         <property name="defaultFault" value="SERVER"/>
         
         <property name="exceptionMappings">
@@ -32,6 +32,31 @@
                 aplikasi.banking.domain.NomerRekeningInvalidException=CLIENT
             </value>
         </property>
+    </bean>
+    
+    <sws:interceptors>
+        
+        <bean id="wsSecurityInterceptor"
+            class="org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor">
+            <property name="policyConfiguration" value="classpath:securityPolicy.xml"/>
+            <property name="callbackHandlers">
+                <list>
+                    <ref bean="keyStoreHandler"/>
+                </list>
+            </property>
+        </bean>
+        
+    </sws:interceptors>
+    
+    
+    <bean id="keyStoreHandler" class="org.springframework.ws.soap.security.xwss.callback.KeyStoreCallbackHandler">
+        <property name="keyStore" ref="keyStore"/>
+        <property name="privateKeyPassword" value="test123"/>
+    </bean>
+
+    <bean id="keyStore" class="org.springframework.ws.soap.security.support.KeyStoreFactoryBean">
+        <property name="location" value="classpath:keystore-server.jks"/>
+        <property name="password" value="test123"/>
     </bean>
 
 </beans>
