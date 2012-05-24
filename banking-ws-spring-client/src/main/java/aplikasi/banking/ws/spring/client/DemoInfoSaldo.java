@@ -6,7 +6,8 @@ package aplikasi.banking.ws.spring.client;
 
 import com.artivisi.banking.SaldoRequest;
 import com.artivisi.banking.SaldoResponse;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 /**
@@ -15,15 +16,8 @@ import org.springframework.ws.client.core.WebServiceTemplate;
  */
 public class DemoInfoSaldo {
     public static void main(String[] args) {
-        WebServiceTemplate template = new WebServiceTemplate();
-        
-        Jaxb2Marshaller jaxb2 = new Jaxb2Marshaller();
-        jaxb2.setContextPath("com.artivisi.banking");
-        template.setMarshaller(jaxb2);
-        template.setUnmarshaller(jaxb2);
-        
-        String uri = "http://localhost:8080/banking-ws-spring/bankingService/";
-        template.setDefaultUri(uri);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:client-ws-ctx.xml");
+        WebServiceTemplate template = ctx.getBean(WebServiceTemplate.class);
         
         SaldoRequest request = new SaldoRequest();
         request.setNomer("123");
