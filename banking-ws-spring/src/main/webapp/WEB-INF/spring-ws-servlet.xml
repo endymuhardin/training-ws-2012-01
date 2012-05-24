@@ -50,8 +50,7 @@
     
     
     <bean id="keyStoreHandler" class="org.springframework.ws.soap.security.xwss.callback.KeyStoreCallbackHandler">
-        <property name="keyStore" ref="keyStore"/>
-        <property name="privateKeyPassword" value="test123"/>
+        <property name="trustStore" ref="keyStore"/>
     </bean>
 
     <bean id="keyStore" class="org.springframework.ws.soap.security.support.KeyStoreFactoryBean">
