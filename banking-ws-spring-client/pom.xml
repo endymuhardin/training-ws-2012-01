@@ -1,57 +1,64 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>training-ws</groupId>
-	<artifactId>banking-ws-spring-client</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>Aplikasi Client untuk WS Spring</name>
+    <groupId>training-ws</groupId>
+    <artifactId>banking-ws-spring-client</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Aplikasi Client untuk WS Spring</name>
 
-	<dependencies>
+    <dependencies>
 
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
-			<version>2.0.5.RELEASE</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.0.5.RELEASE</version>
+        </dependency>
+                
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-security</artifactId>
+            <version>2.0.5.RELEASE</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<configuration>
-				    <forceRegenerate>true</forceRegenerate>
-				    <schemas>
-				        <schema>
-				            <url>http://localhost:8080/banking-ws-spring/banking.wsdl</url>
-			            </schema>
-		            </schemas>
-	            </configuration>  
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <configuration>
+                    <forceRegenerate>true</forceRegenerate>
+                    <schemas>
+                        <schema>
+                            <url>http://localhost:8080/banking-ws-spring/banking.wsdl</url>
+                        </schema>
+                    </schemas>
+                </configuration>  
 				
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
 
