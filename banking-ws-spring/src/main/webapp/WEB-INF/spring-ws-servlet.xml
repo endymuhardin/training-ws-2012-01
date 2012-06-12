@@ -34,8 +34,8 @@
         </property>
     </bean>
     
+    <!--
     <sws:interceptors>
-        
         <bean id="wsSecurityInterceptor"
             class="org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor">
             <property name="policyConfiguration" value="classpath:securityPolicy.xml"/>
@@ -45,9 +45,8 @@
                 </list>
             </property>
         </bean>
-        
     </sws:interceptors>
-    
+    -->
     
     <bean id="keyStoreHandler" class="org.springframework.ws.soap.security.xwss.callback.KeyStoreCallbackHandler">
         <property name="trustStore" ref="keyStore"/>
