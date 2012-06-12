@@ -28,12 +28,51 @@
     	</complexType>
     </element>
     
+    <element name="SimpanTransaksiRequest">
+    	<complexType>
+    		<sequence>
+    			<element name="transaksi" type="bank:Transaksi"></element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
+    <element name="DaftarTransaksiRequest"></element>
+    <element name="DaftarTransaksiResponse">
+    	<complexType>
+    		<sequence>
+    			<element name="daftarTransaksi">
+                            <complexType>
+                                <sequence>
+                                    <element name="transaksi" type="bank:Transaksi" maxOccurs="unbounded"/>
+                                </sequence>
+                            </complexType>
+                        </element>
+    		</sequence>
+    	</complexType>
+    </element>
+    
     <complexType name="Rekening">
     	<all>
     		<element name="nomer" type="string"></element>
     		<element name="nama" type="string"></element>
     		<element name="tanggalPembukaan" type="date"></element>
     		<element name="saldo" type="decimal"></element>
+    	</all>
+    </complexType>
+    
+    <complexType name="Transaksi">
+    	<all>
+    		<element name="id" type="string"></element>
+    		<element name="rekening" type="bank:Rekening"></element>
+    		<element name="waktu" type="date"></element>
+    		<element name="nilai" type="decimal"></element>
+    		<element name="daftarKeterangan">
+                    <complexType>
+                        <sequence>
+                            <element name="keterangan" type="string"></element>
+                        </sequence>
+                    </complexType>
+                </element>
     	</all>
     </complexType>
     

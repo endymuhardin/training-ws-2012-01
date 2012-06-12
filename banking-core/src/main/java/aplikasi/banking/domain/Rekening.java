@@ -2,10 +2,18 @@ package aplikasi.banking.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType
 public class Rekening {
 	private String nomer;
 	private String nama;
+        @XmlSchemaType(name="date")
         private Date tanggalPembukaan;
 	private BigDecimal saldo;
 	

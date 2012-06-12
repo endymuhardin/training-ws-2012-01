@@ -1,7 +1,11 @@
 package aplikasi.banking.ws.spring;
 
+import aplikasi.banking.domain.Rekening;
+import aplikasi.banking.domain.Transaksi;
 import aplikasi.banking.ws.spring.exception.InvalidInputException;
 import aplikasi.banking.service.CoreBankingService;
+import aplikasi.banking.ws.spring.dto.DaftarTransaksiResponse;
+import aplikasi.banking.ws.spring.dto.SimpanTransaksiRequest;
 import com.artivisi.banking.InfoRekeningRequest;
 import com.artivisi.banking.InfoRekeningResponse;
 import com.artivisi.banking.SaldoRequest;
@@ -61,4 +65,35 @@ public class BankingEndpoint {
                 
 		return response;
 	}
+        
+        
+        @PayloadRoot(localPart="SimpanTransaksiRequest", 
+			namespace="http://www.artivisi.com/banking")
+        public void simpanTransaksi(@RequestPayload SimpanTransaksiRequest request){
+            Transaksi t = request.getTransaksi();
+            System.out.println("====== Transaksi ======");
+            System.out.println("ID Transaksi : "+t.getId());
+            System.out.println("Waktu : "+t.getWaktu());
+            System.out.println("Nilai : "+t.getNilai());
+            for (String ket : t.getDaftarKeterangan()) {
+                System.out.println("Keterangan : "+ket);
+            }
+            
+            System.out.println("====== Rekening ======");
+            Rekening r = t.getRekening();
+            System.out.println("Nomer : "+r.getNomer());
+            System.out.println("Nama : "+r.getNama());
+            System.out.println("Tanggal Buka : "+r.getTanggalPembukaan());
+            System.out.println("Saldo : "+r.getSaldo());
+        }
+        
+        @PayloadRoot(localPart="DaftarTransaksiRequest", 
+			namespace="http://www.artivisi.com/banking")
+	@ResponsePayload
+        public DaftarTransaksiResponse daftarTransaksi(){
+            Rekening r = coreBankingService.informasiRekening("123");
+            DaftarTransaksiResponse response = new DaftarTransaksiResponse();
+            response.setDaftarTransaksi(coreBankingService.daftarTransaksi(r));
+            return response;
+        }
 }

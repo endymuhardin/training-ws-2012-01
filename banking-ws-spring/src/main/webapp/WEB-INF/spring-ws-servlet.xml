@@ -9,7 +9,15 @@
 
     <context:component-scan base-package="aplikasi.banking.ws.spring" />
 
-    <sws:annotation-driven />
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
+            <list>
+                <value>aplikasi.banking.ws.spring.dto.DaftarTransaksiResponse</value>
+            </list>
+        </property>
+    </bean>
+
+    <sws:annotation-driven marshaller="jaxb2Marshaller" unmarshaller="jaxb2Marshaller"/>
 
     <sws:dynamic-wsdl 
         id="banking" 
